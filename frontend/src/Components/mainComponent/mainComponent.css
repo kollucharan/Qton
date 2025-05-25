@@ -1,0 +1,783 @@
+/* Global Reset and Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+body {
+  font-family: 'Mulish', sans-serif !important;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Main Container */
+.main-container {
+  font-family: 'Mulish', sans-serif !important;
+  background-color: #f5faff;
+  /* min-height: 100vh; */
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Header Section */
+.hea {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.hea h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.7rem;
+  color: #0031a3;
+  font-family: 'Mulish', sans-serif !important;
+  font-weight: 700;
+}
+
+.hea h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+  color: #0031a3;
+  font-family: 'Mulish', sans-serif !important;
+  font-weight: 600;
+}
+
+.hea p {
+  font-size: 1rem;
+  color: #4F5052;
+  margin: 0 auto 25px;
+  max-width: 750px;
+  padding: 0 1rem;
+  font-family: 'Mulish', sans-serif !important;
+  line-height: 1.6;
+}
+
+/* Card Styling */
+.card {
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 2rem;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.card h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #222;
+  font-family: 'Mulish', sans-serif !important;
+  font-weight: 600;
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Mulish', sans-serif !important;
+  font-size: 1rem;
+}
+
+.form-group textarea,
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccd6eb;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fafbff;
+  box-sizing: border-box;
+  font-family: 'Mulish', sans-serif !important;
+  transition: all 0.2s ease;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group textarea:focus,
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #3366ff;
+  box-shadow: 0 0 0 3px rgba(51,102,255,0.2);
+}
+
+/* Buttons */
+.generate-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #0031a3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.generate-btn:hover {
+  background-color: #002280;
+}
+
+.generate-btn-pop {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #0031a3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+  font-family: 'Mulish', sans-serif !important;
+  position: relative;
+}
+
+.generate-btn-pop:hover:not(:disabled) {
+  background-color: #002280;
+}
+
+.generate-btn-pop:disabled {
+  background-color: #cfd8dc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  color: #78909c;
+  pointer-events: none;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* Questions Popup */
+.questions-popup-container {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.questions-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.questions-popup-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.close-btn:hover {
+  color: #666;
+  background: #f5f5f5;
+}
+
+.questions-popup-info {
+  padding: 16px 24px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  font-size: 0.875rem;
+  color: #666;
+  font-family: 'Mulish', sans-serif !important;
+  flex-shrink: 0;
+}
+
+.questions-popup-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  background: #fff;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* Question Items */
+.question-item {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.question-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.question-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.question-options {
+  margin: 0 0 12px 0;
+  list-style: none;
+  padding: 0;
+}
+
+.option-item {
+  padding: 4px 0;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+  font-family: 'Mulish', sans-serif !important;
+  list-style: none;
+}
+
+.correct-mark {
+  color: #22c55e;
+  font-weight: bold;
+  margin-left: 8px;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.question-answer {
+  margin-top: 8px;
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* Download PDF Section */
+.download-pdf-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+.download-pdf-btn {
+  background-color: #3366ff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.download-pdf-btn:hover {
+  background-color: #2952cc;
+}
+
+/* Card Parent Section */
+.card-parent {
+  padding: 40px 1rem;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.card-parent h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Mulish', sans-serif !important;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.card-below {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+  padding: 0 1rem;
+}
+
+/* Benefits Section */
+.benefits {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 1rem;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.benefits h1 {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-family: 'Mulish', sans-serif !important;
+  font-weight: 700;
+  color: #333;
+}
+
+.benefits__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.benefits__image {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 8px;
+  object-fit: cover;
+  height: 320px;
+  flex-shrink: 0;
+}
+
+.benefits__list {
+  flex: 1;
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  min-width: 300px;
+}
+
+.benefits__list li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1a202c;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* FAQ and Footer */
+.faq {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 0 1rem;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+  padding: 0 1rem;
+}
+
+/* Popup Override Styles */
+.popup-content {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.popup-content * {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+  .main-container {
+    padding: 2rem;
+  }
+  
+  .benefits__content {
+    gap: 3rem;
+  }
+}
+
+/* Desktop (992px to 1199px) */
+@media (max-width: 1199px) {
+  .hea h1 {
+    font-size: 2.2rem;
+  }
+  
+  .benefits__content {
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet (768px to 991px) */
+@media (max-width: 991px) {
+  .main-container {
+    padding: 1.5rem;
+  }
+  
+  .hea h1 {
+    font-size: 2rem;
+  }
+  
+  .hea h2 {
+    font-size: 1.3rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .card-below {
+    gap: 1.5rem;
+  }
+  
+  .benefits__image {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile Large (576px to 767px) */
+@media (max-width: 767px) {
+  .main-container {
+    padding: 1rem;
+  }
+  
+  .hea {
+    margin-bottom: 1.5rem;
+  }
+  
+  .hea h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  .hea h2 {
+    font-size: 1.2rem;
+    line-height: 1.3;
+  }
+  
+  .hea p {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+  
+  .card {
+    padding: 1.25rem;
+    margin: 0 0.5rem;
+  }
+  
+  .card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .card-below {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .card-parent {
+    padding: 30px 0.5rem;
+  }
+  
+  .card-parent h1 {
+    font-size: 1.8rem;
+  }
+  
+  .benefits {
+    padding: 0 0.5rem;
+  }
+  
+  .benefits h1 {
+    font-size: 1.8rem;
+  }
+  
+  .benefits__content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .benefits__image {
+    margin: 0 auto;
+  }
+  
+  .benefits__list {
+    min-width: auto;
+    padding-left: 1.2rem;
+  }
+  /* In your CSS file */
+
+  
+  /* Popup adjustments for tablet */
+  .questions-popup-container {
+    height: 90vh;
+  }
+  
+  .questions-popup-header {
+    padding: 16px 20px;
+  }
+  
+  .questions-popup-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .questions-popup-info {
+    padding: 12px 20px;
+    font-size: 0.8rem;
+  }
+  
+  .questions-popup-content {
+    padding: 16px 20px;
+  }
+  
+  .download-pdf-section {
+    text-align: center;
+  }
+}
+
+/* Mobile Small (up to 575px) */
+@media (max-width: 575px) {
+  .main-container {
+    padding: 0.75rem;
+  }
+  
+  .hea h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hea h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hea p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    padding: 1rem;
+    margin: 0 0.25rem;
+    border-radius: 8px;
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .form-group textarea,
+  .form-group input,
+  .form-group select {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .generate-btn,
+  .generate-btn-pop {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .card-parent {
+    padding: 20px 0.5rem;
+  }
+  
+  .card-parent h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .benefits h1 {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+  
+  .benefits__list li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Mobile popup adjustments */
+  .questions-popup-header {
+    padding: 12px 16px;
+  }
+  
+  .questions-popup-header h3 {
+    font-size: 1rem;
+  }
+  
+  .questions-popup-info {
+    padding: 10px 16px;
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  
+  .questions-popup-content {
+    padding: 12px 16px;
+  }
+  
+  .question-item {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+  }
+  
+  .question-text {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  
+  .option-item {
+    font-size: 0.85rem;
+    padding: 2px 0;
+  }
+  
+  .question-answer {
+    font-size: 0.85rem;
+  }
+  
+  .download-pdf-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .close-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+  }
+}
+
+/* Extra Small Mobile (up to 375px) */
+@media (max-width: 375px) {
+  .main-container {
+    padding: 0.5rem;
+  }
+  
+  .hea h1 {
+    font-size: 1.4rem;
+  }
+  
+  .hea h2 {
+    font-size: 1rem;
+  }
+  
+  .hea p {
+    font-size: 0.85rem;
+  }
+  
+  .card {
+    padding: 0.8rem;
+    margin: 0;
+  }
+  
+  .form-group textarea,
+  .form-group input,
+  .form-group select {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.85rem;
+  }
+  
+  .generate-btn,
+  .generate-btn-pop {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+  
+  .questions-popup-content {
+    padding: 10px 12px;
+  }
+  
+  .download-pdf-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Ensure all text elements use Mulish font */
+h1, h2, h3, h4, h5, h6, p, span, div, label, input, textarea, select, button, li, a {
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* Additional list reset */
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+/* Remove any default list styling that might interfere */
+.question-options li {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+.error-message {
+  color: red!important ;
+   font-family: 'Mulish', sans-serif !important;
+  font-weight: 500; /* optional styling */
+}
