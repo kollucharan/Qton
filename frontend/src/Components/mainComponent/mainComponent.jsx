@@ -47,11 +47,11 @@ function Main() {
   const leftMargin = 60;
   const rightMargin = 40;
   const maxWidth = pageWidth - leftMargin - rightMargin;
-  const lineHeight = 18;     // consistent spacing
+  const lineHeight = 18;     
 
   let cursorY = 40;
 
-  // ---- header ----
+  
   doc.setFontSize(18);
   doc.text('Generated Questions', pageWidth / 2, cursorY, { align: 'center' });
   cursorY += 40;
@@ -61,20 +61,20 @@ function Main() {
   doc.text(info, pageWidth / 2, cursorY, { align: 'center' });
   cursorY += 40;
 
-  // ---- questions ----
+ 
   questions.forEach((q, qIdx) => {
-    // new page?
+    
     if (cursorY + 200 > doc.internal.pageSize.getHeight()) {
       doc.addPage();
       cursorY = 40;
     }
 
-    // question title
+  
     doc.setFontSize(14);
     doc.text(`Question #${qIdx + 1}`, leftMargin, cursorY);
     cursorY += 25;
 
-    // question itself
+   
     doc.setFontSize(11);
     const wrappedQ = doc.splitTextToSize(`${qIdx + 1}. ${q.question}`, maxWidth);
     wrappedQ.forEach(line => {
@@ -83,34 +83,33 @@ function Main() {
     });
     cursorY += 10;
 
-    // options
+   
     if (Array.isArray(q.options)) {
       q.options.forEach((opt, optIdx) => {
-        // 1) strip backslashes, quotes, backticks, smart-quotes:
+        
         let clean = opt
           .toString()
           .replace(/[\\'"`’‘”“]/g, '')
           .replace(/\s+/g, ' ')
           .trim();
 
-        // 2) checkmark?
         const isCorrect = q.correctIndex === optIdx;
         const mark = isCorrect ? '✓ ' : '  ';
 
-        // 3) build and wrap if too long
+        
         const text = `${mark}${clean}`;
         const wrapped = doc.splitTextToSize(text, maxWidth);
 
-        // 4) draw each wrapped line
+        
         wrapped.forEach((line, i) => {
-          // no extra indent on continued lines, keeps everything aligned
+        
           doc.text(line, leftMargin, cursorY);
           cursorY += lineHeight;
         });
       });
     }
 
-    cursorY += 20; // space before next question
+    cursorY += 20; 
   });
 
   doc.save('Quiz_Questions.pdf');
@@ -139,7 +138,7 @@ function Main() {
      setIsLoading(true);
     try {
       const resp = await axios.post(
-        'http://localhost:3000/generatequiz',
+        'https://qton.onrender.com/generatequiz',
         {
           topic: formdata.Topic,
           question_type: formdata.questiontype,
@@ -150,7 +149,7 @@ function Main() {
         { headers: { 'Content-Type': 'application/json' } }
       );
    console.log(resp.data);
-      // Backend now returns { questions: [ { type, question, options?, answer? }, ... ] }
+      
       console.log(resp.data.questions);
       setQuestions(resp.data.questions || []);
       setShowEmailPopup(false);
@@ -260,7 +259,7 @@ function Main() {
         </form>
       </div>
 
-      {/* Email Popup */}
+     
       <Popup
         open={showEmailPopup}
         closeOnDocumentClick
@@ -284,7 +283,7 @@ function Main() {
           >
             <h2>Enter your email to generate questions</h2>
             <div className="form-group">
-              {/* <label htmlFor="email">Email Address</label> */}
+           
               <input
                 type="email"
                 id="email"
@@ -300,7 +299,7 @@ function Main() {
               style={{ width: '100%' }}
               onClick={(e) => handleSubmitEmail(e, close)}
             >
-              {/* Submit and Generate */}
+          
                 {isLoading ? (
     <>
       <div className="spinner" />
@@ -330,7 +329,7 @@ function Main() {
 >
   {(close) => (
     <div className="questions-popup-container">
-      {/* Header */}
+     
       <div className="questions-popup-header">
         <h3>Generated Questions</h3>
         <button onClick={close} className="close-btn">
@@ -338,14 +337,14 @@ function Main() {
         </button>
       </div>
       
-      {/* Info Section */}
+     
       <div className="questions-popup-info">
         <strong>Type:</strong> {formdata.questiontype} | {' '}
         <strong>Difficulty:</strong> {formdata.difficultylevel} | {' '}
         <strong>Count:</strong> {formdata.Noofquestions}
       </div>
       
-      {/* Scrollable Content */}
+     
       <div className="questions-popup-content">
         {questions.map((q, idx) => (
           <div key={idx} className="question-item">
@@ -369,7 +368,7 @@ function Main() {
           </div>
         ))}
         
-        {/* Download PDF Button - At the bottom of content */}
+      
         <div className="download-pdf-section">
           <button className="download-pdf-btn" onClick={downloadpdf}>
             📄 Download PDF

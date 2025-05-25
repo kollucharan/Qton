@@ -1,4 +1,4 @@
-// src/components/MyAccordion.jsx
+
 import React from 'react';
 import {
   Accordion,
@@ -17,7 +17,7 @@ export default function MyAccordion({
   sx = {}
 }) {
   return (
-    // <Accordion sx={sx}>
+    
     <Accordion sx={{
 
       borderRadius: '100px',

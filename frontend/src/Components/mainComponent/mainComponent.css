@@ -1,4 +1,4 @@
-/* Global Reset and Font */
+
 * {
   margin: 0;
   padding: 0;
@@ -19,17 +19,17 @@ body {
   line-height: 1.6;
 }
 
-/* Main Container */
+
 .main-container {
   font-family: 'Mulish', sans-serif !important;
   background-color: #f5faff;
-  /* min-height: 100vh; */
+
   padding: 1rem;
   box-sizing: border-box;
   width: 100%;
 }
 
-/* Header Section */
+
 .hea {
   text-align: center;
   margin-bottom: 2rem;
@@ -62,7 +62,7 @@ body {
   line-height: 1.6;
 }
 
-/* Card Styling */
+
 .card {
   max-width: 750px;
   width: 100%;
@@ -82,7 +82,7 @@ body {
   font-weight: 600;
 }
 
-/* Form Styling */
+
 .form-group {
   margin-bottom: 1.2rem;
 }
@@ -124,7 +124,7 @@ body {
   box-shadow: 0 0 0 3px rgba(51,102,255,0.2);
 }
 
-/* Buttons */
+
 .generate-btn {
   width: 100%;
   padding: 1rem;
@@ -171,7 +171,7 @@ body {
   pointer-events: none;
 }
 
-/* Spinner */
+
 .spinner {
   width: 16px;
   height: 16px;
@@ -190,7 +190,7 @@ body {
   100% { transform: translateY(-50%) rotate(360deg); }
 }
 
-/* Questions Popup */
+
 .questions-popup-container {
   display: flex;
   flex-direction: column;
@@ -258,7 +258,7 @@ body {
   font-family: 'Mulish', sans-serif !important;
 }
 
-/* Question Items */
+
 .question-item {
   margin-bottom: 24px;
   padding-bottom: 16px;
@@ -310,7 +310,7 @@ body {
   font-family: 'Mulish', sans-serif !important;
 }
 
-/* Download PDF Section */
+
 .download-pdf-section {
   margin-top: 30px;
   padding-top: 20px;
@@ -338,7 +338,7 @@ body {
   background-color: #2952cc;
 }
 
-/* Card Parent Section */
+
 .card-parent {
   padding: 40px 1rem;
   font-family: 'Mulish', sans-serif !important;
@@ -362,7 +362,7 @@ body {
   padding: 0 1rem;
 }
 
-/* Benefits Section */
+
 .benefits {
   max-width: 1200px;
   margin: 0 auto 40px;
@@ -411,7 +411,7 @@ body {
   font-family: 'Mulish', sans-serif !important;
 }
 
-/* FAQ and Footer */
+
 .faq {
   display: flex;
   justify-content: center;
@@ -428,7 +428,7 @@ body {
   padding: 0 1rem;
 }
 
-/* Popup Override Styles */
+
 .popup-content {
   font-family: 'Mulish', sans-serif !important;
 }
@@ -437,9 +437,9 @@ body {
   font-family: 'Mulish', sans-serif !important;
 }
 
-/* RESPONSIVE BREAKPOINTS */
 
-/* Large Desktop (1200px and up) */
+
+
 @media (min-width: 1200px) {
   .main-container {
     padding: 2rem;
@@ -450,7 +450,7 @@ body {
   }
 }
 
-/* Desktop (992px to 1199px) */
+
 @media (max-width: 1199px) {
   .hea h1 {
     font-size: 2.2rem;
@@ -461,7 +461,7 @@ body {
   }
 }
 
-/* Tablet (768px to 991px) */
+
 @media (max-width: 991px) {
   .main-container {
     padding: 1.5rem;
@@ -489,7 +489,7 @@ body {
   }
 }
 
-/* Mobile Large (576px to 767px) */
+
 @media (max-width: 767px) {
   .main-container {
     padding: 1rem;
@@ -558,10 +558,10 @@ body {
     min-width: auto;
     padding-left: 1.2rem;
   }
-  /* In your CSS file */
+
 
   
-  /* Popup adjustments for tablet */
+
   .questions-popup-container {
     height: 90vh;
   }
@@ -588,7 +588,7 @@ body {
   }
 }
 
-/* Mobile Small (up to 575px) */
+
 @media (max-width: 575px) {
   .main-container {
     padding: 0.75rem;
@@ -661,7 +661,7 @@ body {
     margin-bottom: 10px;
   }
   
-  /* Mobile popup adjustments */
+
   .questions-popup-header {
     padding: 12px 16px;
   }
@@ -711,7 +711,7 @@ body {
   }
 }
 
-/* Extra Small Mobile (up to 375px) */
+
 @media (max-width: 375px) {
   .main-container {
     padding: 0.5rem;
@@ -757,12 +757,12 @@ body {
   }
 }
 
-/* Ensure all text elements use Mulish font */
+
 h1, h2, h3, h4, h5, h6, p, span, div, label, input, textarea, select, button, li, a {
   font-family: 'Mulish', sans-serif !important;
 }
 
-/* Additional list reset */
+
 li {
   list-style-type: none;
   padding: 0;
@@ -770,7 +770,7 @@ li {
   font-family: 'Mulish', sans-serif !important;
 }
 
-/* Remove any default list styling that might interfere */
+
 .question-options li {
   list-style: none !important;
   padding-left: 0 !important;
