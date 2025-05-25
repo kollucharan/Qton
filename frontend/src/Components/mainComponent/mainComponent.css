@@ -779,5 +779,5 @@ li {
 .error-message {
   color: red!important ;
    font-family: 'Mulish', sans-serif !important;
-  font-weight: 500; /* optional styling */
+  font-weight: 500; 
 }
