@@ -12,7 +12,8 @@ import Faq from '../FAQ/Faq';
 import icon1 from '../../assets/images/download.svg';
 import icon2 from '../../assets/images/robot.svg';
 import icon3 from '../../assets/images/writing.svg'
-
+import icon4 from '../../assets/images/writing_Qton.svg'
+import loadingGif from '../../assets/images/loader.gif';
 function Main() {
   const [formdata, setFormdata] = useState({
     Topic: '',
@@ -27,6 +28,7 @@ function Main() {
   const [isLoading, setIsLoading] = useState(false);
   const [error1 ,setError1] =useState(false);
   const [error2,setError2] =useState(false);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -116,21 +118,56 @@ function Main() {
 };
 
 
-  const handleGenerate = () => {
+  const handleGenerate =  async () => {
     setError1(false);
     setError2(false);
     const { Topic, questiontype, difficultylevel, Noofquestions } = formdata;
     if (!Topic || !questiontype || !difficultylevel||!Noofquestions) {
-    // alert('enter all required fields');
+    
     setError1(true);
       return;
     }
     if (Noofquestions < 5 || Noofquestions > 10) {
-      // alert('Number of questions should be between 5 and 10');
+      
       setError2(true);
       return;
+    } 
+    
+    const alreadyAsked = sessionStorage.getItem('quizEmailAsked') === 'true';
+  if (alreadyAsked) {
+
+      setIsLoading(true);  
+   
+      try {
+      const resp = await axios.post(
+        'https://qton.onrender.com/generatequiz',
+        {
+          topic: formdata.Topic,
+          question_type: formdata.questiontype,
+          difficulty: formdata.difficultylevel,
+          num_questions: formdata.Noofquestions,
+          email: sessionStorage.getItem('email'),
+        },
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+   console.log(resp.data);
+      
+      console.log(resp.data.questions);
+      setQuestions(resp.data.questions || []);
+      setShowEmailPopup(false);
+      setShowQuestionsPopup(true);
+      // closePopup();
+    } catch (err) {
+      console.error('Error generating quiz:', err);
+      alert('Something went wrong.Try again after some time.');
     }
-    setShowEmailPopup(true);
+    finally{
+      setIsLoading(false);
+    }
+  } 
+  else{
+    setShowEmailPopup(true); }
+
   };
 
   const handleSubmitEmail = async (e, closePopup) => {
@@ -162,6 +199,9 @@ function Main() {
     finally{
       setIsLoading(false);
     }
+    sessionStorage.setItem('quizEmailAsked', 'true');
+     sessionStorage.setItem('email', email);
+    
   };
 
   return (
@@ -183,6 +223,16 @@ function Main() {
       </div>
 
       <div className="card">
+     
+      {/* <div className="form-wrapper">
+  {isLoading && (
+    <div className="loader-overlay">
+
+      <img src={loadingGif} alt="Loading…" className="loader-gif" />
+      <p className='loadertext'>Loading...</p>
+    </div>
+  )} */}
+ 
         <form onSubmit={e => e.preventDefault()}>
           <h3>Question Generator</h3>
 
@@ -253,10 +303,22 @@ function Main() {
             className="generate-btn"
             onClick={handleGenerate}
           >
-            Generate Questions
+            {(isLoading &&sessionStorage.getItem('quizEmailAsked') === 'true')? (
+    <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+      <img
+        src={loadingGif}
+        alt="Loading..."
+        style={{ width: 24, height: 24, marginRight: 8 }}
+      />
+      Loading…
+    </span>
+  ) : (
+    'Generate Questions'
+  )}
           </button>
          
         </form>
+        {/* </div> */}
       </div>
 
      
@@ -300,14 +362,28 @@ function Main() {
               onClick={(e) => handleSubmitEmail(e, close)}
             >
           
-                {isLoading ? (
+                {/* {isLoading ? (
     <>
       <div className="spinner" />
       Generating Questions...
     </>
   ) : (
     'Submit and Generate'
-  )}
+  )} */}
+     {isLoading ? (
+              <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <img
+                  src={loadingGif}
+                  alt="Loading..."
+                  style={{ width: 24, height: 24, marginRight: 8 }}
+                />
+                Generating…
+              </span>
+            ) : (
+              'Submit and Generate'
+            )}
+
+      
             </button>
           </div>
         )}
@@ -378,12 +454,14 @@ function Main() {
     </div>
   )}
 </Popup>
+
+
     </div>
    <div className='card-parent'>
     <h1>How Q-ton AI Quiz Maker Works</h1>
     <div className='card-below'>
 
-       <MyCard  title={'Generate Quizzes with AI – Instantly'}  children={'Specify your topic, choose the question type, set the difficulty level, and define the number of questions to effortlessly generate quizzes with AI, tailored to your needs.'} icon={icon3}/>
+       <MyCard  title={'Generate Quizzes with AI – Instantly'}  children={'Specify your topic, choose the question type, set the difficulty level, and define the number of questions to effortlessly generate quizzes with AI, tailored to your needs.'} icon={icon4}/>
          <MyCard title={'AI-Powered Question Generator'}  children={'Our advanced AI processes your inputs and creates relevant, high-quality questions to meet your specifications.'} icon={icon2}/>
            <MyCard title={'Export and Use Instantly'}  children={'Review your generated questions and easily download them in PDF format for immediate use in your educational materials.'} icon={icon1}/>
     </div>
@@ -394,7 +472,7 @@ function Main() {
 
       <div className="benefits__content">
         <img
-          src="https://www.talview.com/hs-fs/hubfs/quizz%20app.jpg?width=400&height=320&name=quizz%20app.jpg"
+          src="https://www.talview.com/hs-fs/hubfs/quizz%20app.jpg?width=750&height=750&name=quizz%20app.jpg"
           alt="Talview quiz app"
           className="benefits__image"
         />
@@ -405,6 +483,7 @@ function Main() {
           <li>3.Pair with AI proctoring tools for end-to-end automation of test creation</li>
           <li>4.<b>Generate questions in real-time</b> to test specific candidate skills during any remote interviews</li>
         </ul>
+   
       </div>
     </div>
    
@@ -413,6 +492,7 @@ function Main() {
       </div>
 
     <Footer/>
+  
     </>
   );
 }

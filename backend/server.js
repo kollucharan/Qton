@@ -8,12 +8,13 @@ import pool from './database.js';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 7000;
 
 app.use(cors());
 app.use(express.json());
 
 app.post('/generatequiz', async (req, res) => {
+  console.log('request recieved');
  
   const { topic, question_type, difficulty, num_questions, email } = req.body;
 
