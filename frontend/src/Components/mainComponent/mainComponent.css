@@ -580,7 +580,8 @@ body {
   }
   
   .questions-popup-content {
-    padding: 16px 20px;
+    /* padding: 16px 20px; */
+     padding: 16px 20px 100px 20px;
   }
   
   .download-pdf-section {
@@ -677,7 +678,8 @@ body {
   }
   
   .questions-popup-content {
-    padding: 12px 16px;
+    /* padding: 12px 16px; */
+      padding: 12px 16px 120px 16px; 
   }
   
   .question-item {
@@ -748,7 +750,8 @@ body {
   }
   
   .questions-popup-content {
-    padding: 10px 12px;
+    /* padding: 10px 12px; */
+     padding: 10px 12px 150px 12px;
   }
   
   .download-pdf-btn {

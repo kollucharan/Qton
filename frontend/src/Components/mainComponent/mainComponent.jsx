@@ -193,7 +193,7 @@ function Main() {
               name="Topic"
               value={formdata.Topic}
               onChange={handleChange}
-              placeholder="Enter the topic"
+              placeholder="Enter a brief topic,or detailed text"
             />
           </div>
 
@@ -281,7 +281,7 @@ function Main() {
               boxSizing: 'border-box',
             }}
           >
-            <h2>Enter your email to generate questions</h2>
+            <h2 style={{marginBottom:'15px'}}>Enter your email to generate questions</h2>
             <div className="form-group">
            
               <input
