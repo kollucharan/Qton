@@ -8,7 +8,7 @@ function App() {
 
     <div>
 
-      <BrowserRouter>
+      <BrowserRouter basename="/ai-quiz-generator">
 
         <Routes>
 
