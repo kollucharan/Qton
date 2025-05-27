@@ -26,7 +26,7 @@ export default function MyCard({
           component="img"
           image={icon}
           alt="card icon"
-          sx={{ width: 60, height: 60, objectFit: 'contain', m: 2 }}
+          sx={{ width: 45, height: 45, objectFit: 'contain', m: 2 }}
         />
       )}
       <CardContent>

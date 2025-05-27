@@ -481,7 +481,7 @@ function Main() {
           <li>1.Instantly generate quizzes for any topic or subject</li>
           <li>2.Customize difficulty levels and question types with ease</li>
           <li>3.Pair with AI proctoring tools for end-to-end automation of test creation</li>
-          <li>4.<b>Generate questions in real-time</b> to test specific candidate skills during any remote interviews</li>
+          <li>4.Generate questions in real-time to test specific candidate skills during any remote interviews</li>
         </ul>
    
       </div>
