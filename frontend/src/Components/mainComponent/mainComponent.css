@@ -32,7 +32,15 @@ li {
 
 .main-container {
   font-family: 'Mulish', sans-serif !important;
-  background-color: #f5faff;
+  /* background-color: #f5faff; */
+   background: linear-gradient(
+    135deg,
+    #F8FCFF,
+    #F3F9FF,
+    #F9F3FF,
+    #FBF6FF,
+    #FFFFFF
+  );
   padding: 1rem;
   box-sizing: border-box;
   width: 100%;
