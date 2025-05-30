@@ -205,9 +205,6 @@ function Main() {
 
   // };
 
-
-
-
   const handleSubmitEmail = async (e) => {
     e.preventDefault();
     setShowEmailPopup(false);
@@ -234,6 +231,7 @@ function Main() {
 
     } catch (err) {
       console.error('Error generating quiz:', err);
+       setShowLoaderPopup(false);
       alert('Something went wrong.Try again after some time.');
     }
     finally {
@@ -262,7 +260,7 @@ function Main() {
       setShowLoaderPopup(true);
       try {
         const resp = await axios.post(
-          'https://qton.onrender.com/generatequiz',
+                'https://qton.onrender.com/generatequiz',
           {
             topic: formdata.Topic,
             question_type: formdata.questiontype,
@@ -281,6 +279,7 @@ function Main() {
         // closePopup();
       } catch (err) {
         console.error('Error generating quiz:', err);
+         setShowLoaderPopup(false);
         alert('Something went wrong.Try again after some time.');
       }
       finally {
