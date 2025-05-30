@@ -10,7 +10,19 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 7000;
 
-app.use(cors());
+// app.use(cors());
+
+const allowedOrigins = [
+  'https://qton.netlify.app/',
+  'https://ai-agents.talview.com',
+];
+
+const corsOptions = {
+  origin: allowedOrigins,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/generatequiz', async (req, res) => {
