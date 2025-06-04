@@ -26,7 +26,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/generatequiz', async (req, res) => {
-  console.log('request recieved');
+  // console.log('request recieved');
  
   const { topic, question_type, difficulty, num_questions, email } = req.body;
 
@@ -104,13 +104,14 @@ Generate a mix of all question types as per user input.`;
     try {
       questionsArray = JSON.parse(cleaned);
     } catch (parseError) {
-      console.error('Error parsing JSON from OpenAI:', parseError, '\nModel response:', text);
-      return res.status(500).json({ error: 'Invalid JSON response from AI.' });
+      // console.error('Error parsing JSON from OpenAI:', parseError, '\nModel response:', text);
+        // return res.status(500).json({ error: 'Invalid JSON response from AI.' });
+      return res.status(500).json({ error: 'Failed to generate quiz.' });
     }
- console.log( 'questionsArray'+questionsArray);
+//  console.log( 'questionsArray'+questionsArray);
     return res.json({ questions: questionsArray });
   } catch (error) {
-    console.error('OpenAI API error:', error.response?.data || error.message);
+    // console.error('OpenAI API error:', error.response?.data || error.message);
     return res.status(500).json({ error: 'Failed to generate quiz.' });
   }
 });
