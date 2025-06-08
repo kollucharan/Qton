@@ -36,8 +36,8 @@ app.post('/generatequiz', async (req, res) => {
   }
 
    await pool.query(
-      "INSERT INTO users(email) VALUES ($1)",
-      [email]
+      "INSERT INTO users(email,topic) VALUES ($1,$2)",
+      [email,topic]
     );
  const userMessage = `Generate ${num_questions} ${question_type} questions on ${topic} at ${difficulty} level.`;
 
